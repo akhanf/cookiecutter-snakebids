@@ -1,34 +1,23 @@
+#!/usr/bin/env python3
+
 """Console script for {{cookiecutter.project_slug}}."""
 
-{%- if cookiecutter.command_line_interface|lower == 'argparse' %}
-import argparse
-{%- endif %}
+import os
 import sys
-{%- if cookiecutter.command_line_interface|lower == 'click' %}
-import click
-{%- endif %}
+from snakebids.app import SnakeBidsApp
 
-{% if cookiecutter.command_line_interface|lower == 'click' %}
-@click.command()
-def main(args=None):
-    """Console script for {{cookiecutter.project_slug}}."""
-    click.echo("Replace this message by putting your code into "
-               "{{cookiecutter.project_slug}}.cli.main")
-    click.echo("See click documentation at https://click.palletsprojects.com/")
-    return 0
-{%- endif %}
-{%- if cookiecutter.command_line_interface|lower == 'argparse' %}
+
+def get_parser():
+    """Exposes parser for sphinx doc generation, cwd is the docs dir"""
+    app = SnakeBidsApp('../{{cookiecutter.project_slug}}', skip_parse_args=True)
+    return app.parser
+
+
 def main():
     """Console script for {{cookiecutter.project_slug}}."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument('_', nargs='*')
-    args = parser.parse_args()
-
-    print("Arguments: " + str(args._))
-    print("Replace this message by putting your code into "
-          "{{cookiecutter.project_slug}}.cli.main")
+    app = SnakeBidsApp(os.path.abspath(os.path.dirname(__file__)))
+    app.run_snakemake()
     return 0
-{%- endif %}
 
 
 if __name__ == "__main__":

@@ -11,3 +11,7 @@ recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 
 recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
+recursive-include {{ cookiecutter.project_slug }} *.json
+recursive-include {{ cookiecutter.project_slug }}/resources *
+recursive-include {{ cookiecutter.project_slug }}/config *
+recursive-include {{ cookiecutter.project_slug }}/workflow *

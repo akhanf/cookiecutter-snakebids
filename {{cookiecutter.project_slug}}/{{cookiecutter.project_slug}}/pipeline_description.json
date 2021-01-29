@@ -1,0 +1,15 @@
+{
+    "Name": "{{cookiecutter.project_slug}} - {{cookiecutter.project_short_description}}",
+    "BIDSVersion": "1.4.0",
+    "DatasetType": "derivative",
+    "GeneratedBy": [
+        {
+            "Name": "{{ cookiecutter.project_slug }}",
+            "Version": "{{ cookiecutter.version }}",
+            "CodeURL": "http://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}",
+            "Author": "{{ cookiecutter.full_name }}",
+            "AuthorEmail": "{{ cookiecutter.email }}"
+ 
+        }
+    ]
+}
